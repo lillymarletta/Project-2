@@ -5,8 +5,6 @@
 
 #include "Ignition.h"
 
-//=====[Declaration of private defines]========================================
-
 //=====[Declaration of private data types]=====================================
 
 typedef enum {
@@ -21,8 +19,6 @@ typedef enum {
 DigitalIn driverSeat(D2);
 DigitalIn ignition(D3);
 DigitalOut engineStarted(LED2);
-
-//=====[Declaration of external public global variables]=======================
 
 //=====[Declaration and initialization of public global variables]=============
 
@@ -45,12 +41,15 @@ bool debounceButtonUpdate();
 //=====[Implementations of public functions]===================================
 
 void ignitionInit(){
+    //initializes buttons to pulldown resistors and the engine light to off.
     driverSeat.mode(PullDown);
     ignition.mode(PullDown);
     engineStarted = OFF;
 }
 
 void updateIgnition(){
+    //if the ignition isn't on, and the driver seat and ignition button are pressed, the engine light turns on
+    //other than that, the engine light turns off
     bool ignitionButtonReleasedEvent = debounceButtonUpdate();
     if (!engineStarted){
         if (driverSeat && ignitionButtonReleasedEvent && ignitionDebounceTime >= DEBOUNCE_TIME){
@@ -69,6 +68,7 @@ void updateIgnition(){
 }
 
 void debounceButtonInit()
+//initializes the button debouncing
 {
     if( ignition == 1) {
         ignitionState = BUTTON_UP;
@@ -78,6 +78,7 @@ void debounceButtonInit()
 }
 
 bool debounceButtonUpdate()
+//debounces the buttons by implementing the state table into cases in the code
 {
     bool ignitionReleasedEvent = false;
     switch(ignitionState) {
@@ -129,6 +130,7 @@ bool debounceButtonUpdate()
 }
 
 bool returnEngineStatus(){
+    //returns the engine light status so it can be used in the main function
     return engineStarted;
 }
 

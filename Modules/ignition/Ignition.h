@@ -8,14 +8,11 @@
 #define DEBOUNCE_TIME  40
 #define DELAY_TIME  10
 
-//=====[Declaration of public data types]======================================
-
 //=====[Declarations (prototypes) of public functions]=========================
 
 void ignitionInit();
 void updateIgnition();
 bool returnEngineStatus();
-
 
 //=====[#include guards - end]=================================================
 

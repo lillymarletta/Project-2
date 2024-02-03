@@ -8,25 +8,18 @@
 
 #define LS_NUMBER_OF_SAMPLES    10
 
-//=====[Declaration of private data types]=====================================
-
 //=====[Declaration and initialization of public global objects]===============
 
 AnalogIn ls(A2);
-
-//=====[Declaration of external public global variables]=======================
-
-//=====[Declaration and initialization of public global variables]=============
 
 //=====[Declaration and initialization of private global variables]============
 
 float lsReadingsArray[LS_NUMBER_OF_SAMPLES];
 
-//=====[Declarations (prototypes) of private functions]========================
-
 //=====[Implementations of public functions]===================================
 
 void lightSensorInit()
+//initialiazes the array of readings of the light sensor. 
 {
     int i;
     
@@ -36,6 +29,7 @@ void lightSensorInit()
 }
 
 float lightSensorUpdate()
+//takes the average of all of the last 10 readings and returns that average number
 {
     static int lsSampleIndex = 0;
     float lsReadingsSum = 0.0;

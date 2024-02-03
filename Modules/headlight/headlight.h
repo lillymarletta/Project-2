@@ -1,12 +1,12 @@
 //=====[#include guards - begin]===============================================
 
-#ifndef _LIGHT_SENSOR_H_
-#define _LIGHT_SENSOR_H_
+#ifndef _HEADLIGHT_H_
+#define _HEADLIGHT_H_
 
 //=====[Declarations (prototypes) of public functions]=========================
 
-void lightSensorInit();
-float lightSensorUpdate();
+void headlightInit();
+void headlightUpdate();
 
 //=====[#include guards - end]=================================================
 
